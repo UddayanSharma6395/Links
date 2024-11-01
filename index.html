@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connect with Me</title>
+  <style>
+    
+    /* General Reset and Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    :root {
+        --color: #000;
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #000;
+      color: #ffffff;
+      overflow: hidden;
+    }
+
+    /* Header Styling */
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: #ffffff; /* No neon effect */
+      animation: fadeIn 2s ease-in-out forwards;
+      opacity: 0;
+    }
+
+    /* Link Container Styling */
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      text-align: center;
+      animation: slideIn 2s ease-in-out forwards;
+      opacity: 0;
+    }
+    a {
+      text-decoration: none;
+      color: #ffffff; /* No neon effect */
+      font-size: 1.25rem;
+      padding: 0.75rem 1.5rem;
+      border: 2px solid #ffffff; /* Solid border without glow */
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s, background-color 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+    a:hover {
+      transform: scale(1.1);
+      background-color: #ffffff;
+      color: #000;
+      box-shadow: 0 0 12px #ffffff, 0 0 24px #ffffff;
+    }
+
+    /* Hollow Neon Bubbles */
+    .bubble {
+      position: absolute;
+      border-radius: 50%;
+      background-color: transparent; /* Hollow circles */
+      border: 2px solid transparent; /* Transparent border */
+      animation: floatX 10s infinite alternate ease-in-out, floatY 7s infinite alternate ease-in-out, twinkle 2s infinite alternate;
+      transition: border-color 0.5s ease-in-out;
+    }
+
+    /* Background Stars */
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('https://www.transparenttextures.com/patterns/stardust.png') repeat;
+      background-size: cover;
+      opacity: 0.1;
+      z-index: -1;
+    }
+
+    /* Keyframes for Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    @keyframes floatX {
+      from { transform: translateX(-10px); }
+      to { transform: translateX(10px); }
+    }
+    @keyframes floatY {
+      from { transform: translateY(-10px); }
+      to { transform: translateY(10px); }
+    }
+    @keyframes twinkle {
+      from { opacity: 0.5; }
+      to { opacity: 1; }
+    }
+    
+    /* Dynamic Bubble Sizes and Positions */
+    .bubble:nth-child(1) {
+      width: 50px; height: 50px; top: 10%; left: 20%;
+      animation-delay: 0s;
+      --color: rgba(255, 0, 0, 0.7); /* Red neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(2) {
+      width: 80px; height: 80px; top: 30%; right: 15%;
+      animation-delay: 2s;
+      --color: rgba(0, 255, 0, 0.7); /* Green neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(3) {
+      width: 30px; height: 30px; top: 60%; left: 10%;
+      animation-delay: 0s;
+      --color: rgba(140, 175, 0, 0.7); /* Blue neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(4) {
+      width: 90px; height: 90px; top: 75%; right: 55%;
+      animation-duration: 3s;
+      --color: rgba(255, 255, 0, 0.7); /* Yellow neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(5) {
+      width: 40px; height: 40px; top: 20%; left: 70%;
+      animation-duration: 1.2s;
+      --color: rgba(255, 0, 255, 0.7); /* Magenta neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(6) {
+      width: 70px; height: 70px; bottom: 20%; right: 15%;
+      animation-duration: 2s;
+      --color: rgba(0, 255, 255, 0.7); /* Cyan neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(7) {
+      width: 50px; height: 50px; bottom: 30%; left: 5%;
+      animation-duration: 1s;
+      --color: rgba(120, 218, 166, 0.7); /* Purple neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(8) {
+      width: 60px; height: 60px; bottom: 15%; left: 50%;
+      animation-duration: 1.5s;
+      --color: rgba(255, 165, 0, 0.7); /* Orange neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color); 
+    }
+    .bubble:nth-child(9) {
+      width: 45px; height: 45px; top: 25%; right: 45%;
+      animation-delay: 0s;
+      --color: rgba(0, 128, 0, 0.7); /* Dark Green neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(10) {
+      width: 75px; height: 75px; bottom: 55%; right: 40%;
+      animation-delay: 0s;
+      --color: rgba(0, 110, 255, 0.7); /* Navy blue neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(11) {
+      width: 55px; height: 55px; top: 40%; left: 35%;
+      animation-delay: 0s;
+      --color: rgb(105, 52, 36); /* Pink neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(12) {
+      width: 65px; height: 65px; top: 50%; right: 25%;
+      animation-duration: 5s;
+     --color: rgb(240, 68, 6); /* Olive neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(13) {
+      width: 40px; height: 40px; top: 10%; right: 45%;
+      animation-delay: 0.5s;
+      --color: rgba(235, 86, 160, 0.7); /* Hot Pink neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(14) {
+      width: 75px; height: 75px; bottom: 30%; left: 20%;
+      animation-delay: 0s;
+      --color: rgb(129, 29, 29); /* Maroon neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    .bubble:nth-child(15) {
+      width: 80px; height: 80px; top: 20%; left: 80%;
+      animation-delay: 0s;
+      --color: rgba(157, 102, 196, 0.685); /* Indigo neon effect */
+      border-color: var(--color);
+      box-shadow: 0 0 10px var(--color), 0 0 30px var(--color), 0 0 60px var(--color);
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- Starry Background -->
+  <div class="stars"></div>
+
+  <!-- Welcome Heading -->
+  <h1>Uddayan Sharma</h1>
+
+  <!-- Links Container -->
+  <div class="links">
+    <a href="https://orcid.org/0009-0000-2529-9772">ORCID</a>
+    <a href="https://github.com/UddayanSharma6395" target="_blank">GitHub</a>
+    <a href="www.linkedin.com/in/uddayan-sharma-923aaa18b" target="_blank">LinkedIn</a>
+    <a href="https://leetcode.com/u/uddayansharma6/" target="_blank">Leetcode</a>
+    <a href="https://www.researchgate.net/profile/Uddayan-Sharma-2" target="_blank">Research Gate</a>
+  </div>
+
+  <!-- Floating Neon Bubbles -->
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  
+
+</body>
+</html>
